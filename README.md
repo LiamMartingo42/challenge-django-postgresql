@@ -1,5 +1,7 @@
 # challenge-django-postgresql
 ---
-```python
-Hello World
+```Makefile
+    make build
+    make server
+    make run
 ```
