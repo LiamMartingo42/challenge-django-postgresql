@@ -1,0 +1,27 @@
+{% extends 'partials/__base.html' %}
+{% load static %}
+{% block content %}
+    <div>
+        {% include 'partials/__alerts.html' %}
+    </div>
+    <form method="POST" action="{% url 'signin' %}">
+        {% csrf_token %}
+        <fieldset>
+            {% for field in form.visible_fields %}
+            <div>
+                <label for="{{field.id_for_label}}">{{field.label}}</label>
+                {{field}}
+            </div>
+            {% for error in field.errors %}
+            <div>
+                <scan style="color: red;">{{error}}</scan>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </fieldset>
+        <button type="submit">Confirmar</button>
+    </form>
+    <div>
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+{% endblock %}

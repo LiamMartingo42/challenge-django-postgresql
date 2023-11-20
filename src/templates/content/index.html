@@ -1,0 +1,9 @@
+{% extends 'partials/__base.html' %}
+{% load static %}
+{% block content %}
+    {% include 'partials/__alerts.html' %}
+    <h1>Hello</h1>
+    <div>
+        <a href="{% url 'logout' %}">logout</a>
+    </div>
+{% endblock %}
