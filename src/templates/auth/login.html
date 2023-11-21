@@ -1,0 +1,27 @@
+{% extends 'partials/__base.html' %}
+{% load static %}
+{% block content %}
+    <div>
+        {% include 'partials/__alerts.html' %}
+        <div id="intro" class="bg-image shadow-2-strong mt-5 pt-5 ">
+            <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-xl-5 col-md-8">
+                    <form action="{% url 'login' %}" method="POST" class="bg-white rounded shadow-5-strong p-5">
+                        {% csrf_token %}
+                        <fieldset>
+                        {% include 'auth/__form.html' %}
+                        </fieldset>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    
+{% endblock %}
+ <!-- Background image -->
+ 

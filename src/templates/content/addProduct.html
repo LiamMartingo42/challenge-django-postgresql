@@ -1,0 +1,24 @@
+{% extends 'partials/__base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <form action="{% url 'addProduct' %}" method="POST">
+        {% csrf_token %}
+        <fieldset class="border border-2 border-white rounded-4 pt-3 mt-3 shadow-lg p-3 mb-5 rounded">
+            {% for field in form.visible_fields %}
+                <div>
+                    <label for="{{field.id_for_label}}">{{field.label}}</label>
+                    {{field}}
+                </div>
+                {% for error in field.errors %}
+                    <div>
+                        <scan style="color: red;">{{error}}</scan>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary btn-block mt-3">Adicionar</button> 
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

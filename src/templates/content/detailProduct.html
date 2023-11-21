@@ -1,0 +1,26 @@
+{% extends 'partials/__base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    {% if product %}
+    <h2 class="">Informações</h2>
+    <ul class="border border-2 rounded">
+        <li class="text-start mt-3">
+            <p>Produto: {{product.nome}}</p>
+        </li >
+        <li class="text-start mt-3">
+            <p>R${{product.valor}}</p>
+        </li>
+        <li class="text-start mt-3" >
+            <p>Descrição: {{product.descricao}}</p>
+        </li>
+    </ul>
+    <div class="container">
+        <a class="btn btn-success" href="{% url 'updateProduct' product.Id %}">Atualizar</a>
+        <a class="btn btn-danger" href="{% url 'deleteProduct' product.Id %}">Deletar</a>
+        <a class="btn btn-primary" href="{% url 'home' %}">Voltar</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

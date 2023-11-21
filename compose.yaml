@@ -1,0 +1,35 @@
+version: '1'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=djangoproject
+      - POSTGRES_USER=usertest
+      - POSTGRES_PASSWORD=usertest
+    networks:
+      - compose-bridge
+    expose:
+      - 5432
+    volumes:
+    - db-volume:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+    networks:
+      - compose-bridge
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.example
+    depends_on:
+      - db
+
+networks:
+  compose-bridge:
+    driver: bridge
+
+volumes:
+  db-volume:
+

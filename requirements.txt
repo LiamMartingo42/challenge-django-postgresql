@@ -1,0 +1,9 @@
+Django==4.2.7
+django-extensions==3.2.3
+django-environ==0.11.2
+poetry==1.7.0
+poetry-core==1.8.1
+pytest==7.4.3
+psycopg2-binary==2.9.9
+wheel==0.41.3
+python-dotenv
