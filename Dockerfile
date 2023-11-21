@@ -8,6 +8,8 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
+COPY . .
+
 ARG UID=10001
 RUN adduser \
     --disabled-password \
@@ -25,8 +27,6 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 RUN /bin/sh -c python3 src/manage.py migrate
 
 USER appuser
-
-COPY . .
 
 EXPOSE 8000
 

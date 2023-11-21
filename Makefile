@@ -1,5 +1,8 @@
 ifeq ($(OS),WINDOWS_NT)
 
+migrate:
+	python src/manage.py makemigrations 
+	python src/manage.py migrate 
 
 build:
 	pip install -r requirements.txt
@@ -14,6 +17,9 @@ compose:
 
 else
 
+migrate:
+	python3 src/manage.py makemigrations 
+	python3 src/manage.py migrate 
 build:
 	sudo apt install python3
 	pip3 install -r requirements.txt
@@ -28,6 +34,5 @@ tests:
 
 compose:
 	docker compose up
-
 
 endif
