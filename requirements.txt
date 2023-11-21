@@ -6,3 +6,4 @@ poetry-core==1.8.1
 pytest==7.4.3
 psycopg2-binary==2.9.9
 wheel==0.41.3
+python-dotenv

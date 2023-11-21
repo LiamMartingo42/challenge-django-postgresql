@@ -26,5 +26,8 @@ manage:
 
 tests:
 
+compose:
+	docker compose up
+
 
 endif
