@@ -1,0 +1,12 @@
+{% extends 'partials/__base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Deseja mesmo Deletar este Produto: {{ product.nome }}</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+            <input class="btn btn-success btn-block mt-3" type="submit" value="Sim, Deletar">
+            <a class="btn btn-danger btn-block mt-3" href="{% url 'home' %}">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

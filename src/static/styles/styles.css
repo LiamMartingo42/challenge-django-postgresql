@@ -2,3 +2,9 @@ body{
     background-color: black;
     color: white;
 }
+input::placeholder {
+    color: white !important;
+}
+input[type="text"]{
+    padding-inline: 45px;
+}

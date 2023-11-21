@@ -2,54 +2,84 @@ from django import forms
 
 class LoginForms(forms.Form):
     nomeLogin = forms.CharField(
-        label="name",
+        label="Nome de Usuário:",
         required=True,
         max_length=30,
         widget=forms.TextInput(
-            attrs={}
+            attrs={
+                'class': 'form-control text-light',
+                "style":"background-color: black",
+                'id':"form1Example1",
+                'placeholder':"Digite seu nome: 'Jóse'"
+            }
         )
     )
     senhaLogin = forms.CharField(
-        label="password",
+        label="Senha:",
         required=True,
         max_length=100,
         widget=forms.PasswordInput(
-            attrs={}
+            attrs={
+                'class': 'form-control text-light',
+                "style":"background-color: black",
+                'id':"form1Example2",
+                'placeholder':"Digite sua senha: 12345"
+            }
         )
     )
         
 
 class SignInForms(forms.Form):
     nomeSignIn = forms.CharField(
-        label="name",
+        label="Nome:",
         required=True,
         max_length=30,
         widget=forms.TextInput(
-            attrs={}
+            attrs={
+                'class': 'form-control text-light',
+                'style': 'background-color: black;',
+                'id':"form1Example1",
+                'placeholder':"Digite seu nome - Ex: 'david'"
+            }
         )
     )
     email = forms.EmailField(
-        label="email",
+        label="E-mail:",
         required=True,
         max_length=30,
         widget=forms.EmailInput(
-            attrs={}
+            attrs={
+                'class': 'form-control text-light',
+                "style":"background-color: black;",
+                'id':"form1Example1",
+                'placeholder':"Digite seu email - Ex: 'fulano@gmail.com'"
+            }
         )
     )
     senhaSignIn = forms.CharField(
-        label="password",
+        label="Senha:",
         required=True,
         max_length=100,
         widget=forms.PasswordInput(
-            attrs={}
+            attrs={
+                'class': 'form-control text-light',
+                "style":"background-color: black;",
+                'id':"form1Example2",
+                'placeholder':"Digite sua senha - Ex:1234545"
+            }
         )
     )
     confirmeSenhaSignIn = forms.CharField(
-        label="confirmepassword",
+        label="Cofirmar Senha:",
         required=True,
         max_length=100,
         widget=forms.PasswordInput(
-            attrs={}
+            attrs={
+                'class': 'form-control text-light',
+                "style":"background-color: black;",
+                'id':"form1Example2",
+                'placeholder':"Digite sua senha novamente"
+            }
         )
     )
     

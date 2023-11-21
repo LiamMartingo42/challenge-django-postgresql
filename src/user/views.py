@@ -19,13 +19,16 @@ def login(request: HttpRequest):
             username=nome,
             password=senha
         )
-        print(userlogin)
         if userlogin is not None:
-            auth.login(request, userlogin)
-            messages.success(request,f"{nome} logado com sucesso")
-            return redirect('home')
+            if userlogin.check_password(senha):
+                auth.login(request, userlogin)
+                messages.success(request,f"{nome} logado com sucesso")
+                return redirect('home')
+            else:
+                messages.w(request,"Usuário e/ou senha Incorretos!")
+                return redirect('login')
         else:
-            messages.error(request,"Erro ao efetuar login")
+            messages.error(request,"Erro ao efetuar login!",extra_tags='danger')
             return redirect('login')
             
     return render(request,'auth/login.html',{'form': form})
@@ -35,6 +38,7 @@ def signin(request: HttpRequest):
     
     if request.method == 'POST':
         form = SignInForms(request.POST)
+        
         if form.is_valid():
             
             nome = form["nomeSignIn"].value()
@@ -42,7 +46,7 @@ def signin(request: HttpRequest):
             senha = form["senhaSignIn"].value()
 
             if User.objects.filter(username=nome, email=email).exists():
-                messages.error(request, "Essa conta já existe!")
+                messages.warning(request, "Essa conta já existe!")
                 return redirect('signin')
 
             user = User.objects.create_user(
@@ -52,7 +56,8 @@ def signin(request: HttpRequest):
             )
             user.save()
             messages.success(request, "Conta efetuada com sucesso")
-            return redirect('home')
+            return redirect('login')
+                
     return render(request,'auth/signin.html', {'form': form})
 
 def logout(request: HttpRequest):

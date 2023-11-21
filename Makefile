@@ -5,7 +5,7 @@ build:
 	pip install -r requirements.txt
 
 run:
-	python3 src/manage.py runserver
+	python src/manage.py runserver
 
 tests:
 

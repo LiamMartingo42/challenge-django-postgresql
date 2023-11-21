@@ -1,0 +1,36 @@
+{% extends 'partials/__base.html' %}
+{% load static %}
+{% block content %}
+{% include 'partials/__alerts.html' %}
+<div class="container mt-5">
+    <h2 class="text-capitalize fs-4 fw-bold">Seus Produtos</h2>
+    <div>
+        <a href=""></a>
+    </div>
+    {% if products %}
+    <table class="table table-bordered table-striped table-dark caption-top">
+        <caption style="color: white;">Tabela de Produtos</caption>
+        <thead class="">
+            <tr>
+                <th scope="col">INFO</th>
+                <th scope="col">Nome do Produto</th>
+                <th scope="col">Valor do Produto</th>
+                <th scope="col">Breve descrição do Produto</th>
+            </tr>
+        </thead>
+        {% for product in products %}
+        <tbody>
+            <tr>
+                <td class="">
+                    <a class="btn btn-primary" href="{% url 'details' product.Id %}">Mostrar</a>
+                </td>
+                <td class="text-capitalize">{{product.nome}}</td>
+                <td>R$ {{product.valor}}</td>
+                <td style="width: 400px;">{{product.descricao}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

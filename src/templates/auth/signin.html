@@ -1,27 +1,23 @@
 {% extends 'partials/__base.html' %}
 {% load static %}
 {% block content %}
-    <div>
-        {% include 'partials/__alerts.html' %}
-    </div>
-    <form method="POST" action="{% url 'signin' %}">
-        {% csrf_token %}
-        <fieldset>
-            {% for field in form.visible_fields %}
-            <div>
-                <label for="{{field.id_for_label}}">{{field.label}}</label>
-                {{field}}
+<div>
+    {% include 'partials/__alerts.html' %}
+</div>
+<div id="intro" class="bg-image shadow-2-strong mt-5 pt-5 ">
+    <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-md-8">
+                    <form method="POST" action="{% url 'signin' %}" class="bg-white rounded shadow-5-strong p-5">
+                        {% csrf_token %}
+                        <fieldset>{% include 'auth/__form.html' %}
+                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
-            {% for error in field.errors %}
-            <div>
-                <scan style="color: red;">{{error}}</scan>
-            </div>
-            {% endfor %}
-            {% endfor %}
-        </fieldset>
-        <button type="submit">Confirmar</button>
-    </form>
-    <div>
-        <a href="{% url 'login' %}">Login</a>
+        </div>
     </div>
+</div>
 {% endblock %}

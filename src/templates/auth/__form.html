@@ -1,0 +1,11 @@
+{% for field in form.visible_fields %}
+    <div class="form-outline mb-4">
+        <label class="form-label" style="color: black;" for="{{field.id_for_label}}">{{field.label}}</label>
+        {{field}}
+    </div>
+    {% for error in field.errors %}
+        <div>
+            <scan style="color: red;">{{error}}</scan>
+        </div>
+    {% endfor %}
+{% endfor %}
